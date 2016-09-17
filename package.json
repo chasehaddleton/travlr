@@ -1,0 +1,28 @@
+{
+  "name": "travlr",
+  "version": "1.0.0",
+  "description": "A app for helping recommend your travelling.",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "node": "^0.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "\"echo \\\"This is our node server\\\"\"",
+    "start": "node ./app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chasehaddleton/travlr.git"
+  },
+  "keywords": [
+    "travelling"
+  ],
+  "author": "Alex Wiley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chasehaddleton/travlr/issues"
+  },
+  "homepage": "https://github.com/chasehaddleton/travlr#readme"
+}
