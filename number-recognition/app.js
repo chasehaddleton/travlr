@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var gcloud = require('gcloud')({
-    projectId: process.env.GCP_PROJECT,
+    projectId: process.env.GCP_PROJECT
 });
 
 var vision = gcloud.vision();
@@ -26,6 +26,6 @@ app.post('/', function(req, res){
     });
 });
 
-app.listen('3000', function(){
-    console.log('App running on port 3000');
+app.listen(process.env.port || '3000', function(){
+    console.log('App running on a port (or 3000?)');
 });
