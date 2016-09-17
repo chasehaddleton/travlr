@@ -5,7 +5,7 @@ var app = express();
 app.use(express.static('public'));
 
 app.get('/', function(req, res){
-   res.send('something');
+   res.send('This is a holding page for travlr.');
 });
 
 // app.use('/login', require('./routes/login.js'));
