@@ -1,0 +1,21 @@
+{
+  "name": "number-recognition",
+  "version": "1.0.0",
+  "description": "Turn images into numbers",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "travlr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chasehaddleton/travlr/issues"
+  },
+  "homepage": "https://github.com/chasehaddleton/travlr#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "gcloud": "^0.37.0"
+  }
+}
