@@ -1,19 +1,22 @@
 {
-  "name": "website",
+  "name": "loc-suggest",
   "version": "1.0.0",
-  "description": "Website",
+  "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "\"echo \\\"Hello world\\\"\""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chasehaddleton/travlr.git"
   },
-  "author": "travlr",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/chasehaddleton/travlr/issues"
   },
-  "homepage": "https://github.com/chasehaddleton/travlr#readme"
+  "homepage": "https://github.com/chasehaddleton/travlr#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }
