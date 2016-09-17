@@ -4,7 +4,8 @@
   "description": "Website",
   "main": "app.js",
   "scripts": {
-    "test": "\"echo \\\"Hello world\\\"\""
+    "test": "\"echo \\\"Hello world\\\"\"",
+    "start": "node ./app.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/chasehaddleton/travlr/issues"
   },
-  "homepage": "https://github.com/chasehaddleton/travlr#readme"
+  "homepage": "https://github.com/chasehaddleton/travlr#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "gcloud": "^0.37.0"
+  }
 }
