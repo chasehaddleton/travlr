@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "\"echo \\\"Hello world\\\"\"",
-    "start": "node ./app.js"
+    "start": "node ./app.js",
+    "deploy": "gcloud app deploy app.yaml"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,6 @@
   "homepage": "https://github.com/chasehaddleton/travlr#readme",
   "dependencies": {
     "express": "^4.14.0",
-    "gcloud": "^0.37.0"
+    "google-cloud": "^0.40.0"
   }
 }
