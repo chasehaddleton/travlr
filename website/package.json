@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/chasehaddleton/travlr#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "gcloud": "^0.37.0"
   }
 }
