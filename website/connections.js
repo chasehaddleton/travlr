@@ -25,10 +25,10 @@ const userTableSchema = mongoose.model('User', User);
 
 const addUser = function(user, email, password, oAuth) {
     const info = {
-        user,
-        email,
-        password,
-        oAuth,
+        user: user,
+        email: user,
+        password: user,
+        oAuth: user,
         tp: 0
     };
     //Create new user object
@@ -86,7 +86,7 @@ const returnUser = function(name){
      if(err){
          console.log('User not found');
      }
-     console.log(person);
+     return person;
   });
 };
 
