@@ -51,7 +51,10 @@ app.post('/', function (req, res) {
                     name: cur.name,
                     rating: cur.rating,
                     distance: Math.abs(distanceBetween(cur.lon, cur.lat, latitude, longitude)),
-                    location: cur.location
+                    location: {
+                        lat: cur.location.lat,
+                        lng: cur.location.lon
+                    }
                 });
             }
             return result;
