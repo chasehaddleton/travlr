@@ -38,7 +38,15 @@ const addUser = function(user, email, password, oAuth) {
             email: info.email,
             password: info.password,
             oAuth: info.oAuth,
-            tp: info.tp
+            visited: [],
+            traits: {
+                food: [],
+                entertainment: [],
+                outdoorsy: 0,
+                exploration: 0,
+                wealth: 0
+            },
+            travellerPoints: 0
         });
     //Save to database
     newUser.save(function (err) {
@@ -49,15 +57,27 @@ const addUser = function(user, email, password, oAuth) {
     });
 };
 
-const addTraits = function(name, newTraits){
+const addTraits = function(name, type, value){
 
-    userTableSchema.findOneAndUpdate({name: name}, {name: 'Test'}, {upsert:true}, function(err, person){
-        try{
-            console.log('%s was found and updated', person.name);
+    userTableSchema.findOne({name: name}, 'traits.' + type, function(err, newTraits){
+        if(err){
+            console.log(err);
         }
-        catch(err){
-            console.log('User not updated');
+        else if(newTraits == null){
+            console.log('User not found');
         }
+        else if(type === ('food' || 'entertainment')){
+            newTraits.traits[type].push(value);
+        }
+        else{
+            newTraits.traits[type] = value;
+        }
+        newTraits.save(function(err){
+            if(err){
+                console.log(err);
+            }
+            console.log('Success');
+        })
     });
 };
 
@@ -70,5 +90,7 @@ const returnUser = function(name){
   });
 };
 
-addUser('Alex', 'alex@alexwiley.co.uk', 'testpassword', 123456);
+// addUser('Alex', 'alex@alexwiley.co.uk', 'testpassword', 123456);
 // returnUser('Test');
+
+addTraits('New', 'wealth', '20');
