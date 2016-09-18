@@ -1,3 +1,4 @@
+require('@google/cloud-debug');
 var express = require('express');
 var request = require('request');
 var bodyparser = require('body-parser');
