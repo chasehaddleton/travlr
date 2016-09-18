@@ -1,4 +1,4 @@
-require('@google/cloud-debug');
+//require('@google/cloud-debug');
 var express = require('express');
 var request = require('request');
 var bodyparser = require('body-parser');
@@ -17,7 +17,7 @@ app.post('/', function(req, res) {
     googleMapsClient.places(
         {
             query: keyword,
-            location: [lat,lon],
+            location: [lat, lon],
             radius: 20,
             opennow: true
         },
@@ -42,4 +42,4 @@ app.post('/', function(req, res) {
     );
 });
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT || 8080);
