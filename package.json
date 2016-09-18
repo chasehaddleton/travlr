@@ -18,6 +18,12 @@
   },
   "homepage": "https://github.com/chasehaddleton/travlr#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "@google/maps": "^0.2.1",
+    "body-parser": "^1.15.2",
+    "countryjs": "^1.5.2",
+    "express": "^4.14.0",
+    "fs": "0.0.1-security",
+    "promise": "^7.1.1",
+    "request": "^2.75.0"
   }
 }
