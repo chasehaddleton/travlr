@@ -19,7 +19,17 @@
   },
   "homepage": "https://github.com/chasehaddleton/travlr#readme",
   "dependencies": {
+    "app-root-dir": "^1.0.2",
     "express": "^4.14.0",
-    "google-cloud": "^0.40.0"
+    "fs": "0.0.1-security",
+    "google-cloud": "^0.40.0",
+    "node-sass": "^3.10.0",
+    "path": "^0.12.7",
+    "pug": "^2.0.0-beta6",
+    "request": "^2.75.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-sass": "^1.2.1"
   }
 }
