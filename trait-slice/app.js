@@ -13,13 +13,13 @@ function distanceBetween(lon1, lat1, lon2, lat2) {
     var R = 6371e3; // metres
     var angle1 = lat1.toRadians();
     var angle2 = lat2.toRadians();
-    var deltaAngle1 = (lat2-lat1).toRadians();
-    var deltaAngle2 = (lon2-lon1).toRadians();
+    var deltaAngle1 = (lat2 - lat1).toRadians();
+    var deltaAngle2 = (lon2 - lon1).toRadians();
 
-    var a = Math.sin(deltaAngle1/2) * Math.sin(deltaAngle1/2) +
+    var a = Math.sin(deltaAngle1 / 2) * Math.sin(deltaAngle1 / 2) +
         Math.cos(angle1) * Math.cos(angle2) *
-        Math.sin(deltaAngle2/2) * Math.sin(deltaAngle2/2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        Math.sin(deltaAngle2 / 2) * Math.sin(deltaAngle2 / 2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
     return R * c;
 }
@@ -29,7 +29,7 @@ app.post('/', function (req, res) {
     var longitude = req.body.location.lon;
     var keywords = req.body.keywords;
 
-    var search = keywords[getRandom(0, (length(keywords) - 1))];
+    var search = keywords[getRandom(0, (keywords.length - 1))];
 
     var options = {
         method: 'post',
@@ -43,6 +43,9 @@ app.post('/', function (req, res) {
     };
 
     request(options, function (error, response, body) {
+            if (error) {
+                console.log(error);
+            }
             var result = {};
             for (i = 0; i < 3; i++) {
                 var cur = body[i];
@@ -50,18 +53,16 @@ app.post('/', function (req, res) {
                     id: cur.id,
                     name: cur.name,
                     rating: cur.rating,
-                    distance: Math.abs(distanceBetween(cur.lon, cur.lat, latitude, longitude)),
+                    distance: Math.abs(distanceBetween(cur.location.lon, cur.location.lat, latitude, longitude)),
                     location: {
                         lat: cur.location.lat,
                         lng: cur.location.lon
                     }
                 });
             }
-            return result;
+            res.send(result);
         }
     );
-
-    res.send('This is a holding page for travlr.');
 });
 
 var server = app.listen(process.env.PORT || '8080', function () {
