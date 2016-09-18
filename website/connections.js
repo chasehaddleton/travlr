@@ -3,6 +3,8 @@
 var mongoose = require('mongoose');
 mongoose.connect('localhost:9001');
 
+var exports = module.exports = {};
+
 //Mongoose Schema
 const User = {
     name: String,
@@ -23,7 +25,7 @@ const User = {
 //User table schema
 const userTableSchema = mongoose.model('User', User);
 
-const addUser = function(user, email, password, oAuth) {
+exports.addUser = function(user, email, password, oAuth) {
     const info = {
         user: user,
         email: user,
@@ -57,7 +59,7 @@ const addUser = function(user, email, password, oAuth) {
     });
 };
 
-const addTraits = function(name, type, value){
+exports.addTraits = function(name, type, value){
 
     userTableSchema.findOne({name: name}, 'traits.' + type, function(err, newTraits){
         if(err){
@@ -81,16 +83,14 @@ const addTraits = function(name, type, value){
     });
 };
 
-const returnUser = function(name){
-  userTableSchema.findOne({name: name}, 'name email visited traits travellerPoints', function(err, person){
+exports.returnUser = function(name, done){
+    console.log('triggered');
+    userTableSchema.findOne({name: name}, 'name email visited traits travellerPoints', function(err, person){
      if(err){
          console.log('User not found');
      }
-     return person;
+     done(false, person);
   });
 };
 
-// addUser('Alex', 'alex@alexwiley.co.uk', 'testpassword', 123456);
-// returnUser('Test');
 
-addTraits('New', 'wealth', '20');
