@@ -9,6 +9,7 @@ var app = express();
 app.use(bodyparser.json());
 
 app.post('/', function(req, res) {
+    console.log('post');
     var lat = req.body.lat;
     var lon = req.body.lon;
     var keyword = req.body.keyword;
@@ -29,7 +30,7 @@ app.post('/', function(req, res) {
                 response.push({
                     name: result.name,
                     type: result.types[0],
-                    location: result.location,
+                    location: result.geometry.location,
                     rating: result.rating,
                     id: result.id
                 });
