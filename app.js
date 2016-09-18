@@ -4,21 +4,21 @@ var request = require('request');
 var bodyparser = require('body-parser');
 var fs = require('fs');
 var googleMapsClient = require('@google/maps').createClient({
-  key: 'AIzaSyCN9uiUUaOTG4K4X8ucv0iOf1dKlmYEms4'
+    key: 'AIzaSyCN9uiUUaOTG4K4X8ucv0iOf1dKlmYEms4'
 });
 var Promise = require('promise');
 var country = require('countryjs');
 
-googleMapsClient.places()
+googleMapsClient.places();
 
 function code_from_loc(lat, lon) {
-    return new Promise(function(fulfill, reject) {
+    return new Promise(function (fulfill, reject) {
         googleMapsClient.reverseGeocode(
             {
-                latlng: [lat,lon]
+                latlng: [lat, lon]
             },
-            function(err, response) {
-                if(err) reject(error);
+            function (err, response) {
+                if (err) reject(err);
                 console.log(response.json.results[0]);
                 var street_address = response.json.results[0].formatted_address;
                 var country_code = street_address.slice(street_address.length - 2);
@@ -29,15 +29,15 @@ function code_from_loc(lat, lon) {
 }
 
 function currency_convert(to, from, amount) {
-    return new Promise(function(fulfill, reject) {
+    return new Promise(function (fulfill, reject) {
         request({
                 url: 'https://xecdapi.xe.com/v1/convert_from.json/?to=' + to + '&from=' + from + '&amount=' + amount,
                 headers: {
                     "Authorization": auth
                 }
             },
-            function(error, response, body) {
-                if(error) reject(error);
+            function (error, response, body) {
+                if (error) reject(error);
 
                 body = JSON.parse(body);
                 console.log(body);
@@ -57,7 +57,7 @@ function currency_convert(to, from, amount) {
 
 var auth = '';
 
-app.get('/convert', function(req, res) {
+app.get('/convert', function (req, res) {
     var lat = req.query.lat;
     var lon = req.query.lon;
     var amount = req.query.amount;
@@ -67,15 +67,15 @@ app.get('/convert', function(req, res) {
 
     var to = 'GBP';
 
-    code_from_loc(lat, lon).done(function(country_code) {
+    code_from_loc(lat, lon).done(function (country_code) {
         console.log(country_code);
         console.log(country.info('USA'));
         var currency_code = country.info(country_code).currencies[0];
 
-       currency_convert(to, currency_code, amount).done(function(money_amount) {
-           console.log('money amount: ' + money_amount);
-          res.send(money_amount);
-       });
+        currency_convert(to, currency_code, amount).done(function (money_amount) {
+            console.log('money amount: ' + money_amount);
+            res.send(money_amount);
+        });
     });
 });
 
@@ -91,7 +91,7 @@ request({
             "Authorization": auth
         }
     },
-    function(error, response, body) {
+    function (error, response, body) {
         if (!error && response.statusCode == 200) {
             console.log('xe auth successful');
         } else {
@@ -102,4 +102,3 @@ request({
 );
 
 app.listen(25566);
-
