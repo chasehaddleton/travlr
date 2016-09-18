@@ -30,7 +30,8 @@ app.post('/', function(req, res) {
                     name: result.name,
                     type: result.types[0],
                     location: result.location,
-                    rating: result.rating
+                    rating: result.rating,
+                    id: result.id
                 });
             });
 
